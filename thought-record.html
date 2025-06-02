@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thought Record Worksheet</title>
+    <style>
+        @media print {
+            body {
+                width: 21cm;
+                height: 29.7cm;
+                margin: 0;
+                padding: 2cm;
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2em;
+        }
+
+        .thought-record {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2em;
+        }
+
+        .thought-record th, .thought-record td {
+            border: 1px solid #ccc;
+            padding: 1em;
+            vertical-align: top;
+        }
+
+        .thought-record th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+
+        .writing-area {
+            min-height: 100px;
+            border-bottom: 1px dashed #ccc;
+            margin-bottom: 1em;
+        }
+
+        .instructions {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Thought Record</h1>
+        <p>Date: _________________ Time: _________________</p>
+    </div>
+
+    <table class="thought-record">
+        <tr>
+            <th>
+                Situation
+                <div class="instructions">What happened? When? Where? Who with?</div>
+            </th>
+            <th>
+                Emotions
+                <div class="instructions">What did you feel? Rate intensity (0-100%)</div>
+            </th>
+            <th>
+                Automatic Thoughts
+                <div class="instructions">What went through your mind?</div>
+            </th>
+        </tr>
+        <tr>
+            <td><div class="writing-area"></div></td>
+            <td><div class="writing-area"></div></td>
+            <td><div class="writing-area"></div></td>
+        </tr>
+        <tr>
+            <th>
+                Evidence For
+                <div class="instructions">What supports this thought?</div>
+            </th>
+            <th>
+                Evidence Against
+                <div class="instructions">What doesn't support this thought?</div>
+            </th>
+            <th>
+                Balanced Thought
+                <div class="instructions">What's a more balanced view?</div>
+            </th>
+        </tr>
+        <tr>
+            <td><div class="writing-area"></div></td>
+            <td><div class="writing-area"></div></td>
+            <td><div class="writing-area"></div></td>
+        </tr>
+    </table>
+
+    <div class="result">
+        <h3>Result</h3>
+        <p>Re-rate emotion intensity (0-100%): _________________</p>
+        <div class="writing-area"></div>
+    </div>
+
+    <div class="footer">
+        <p>Note: This thought record is based on Cognitive Behavioral Therapy (CBT) principles. Use it to identify and challenge negative thought patterns.</p>
+    </div>
+</body>
+</html> 

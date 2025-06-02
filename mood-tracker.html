@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Mood Tracker</title>
+    <style>
+        @media print {
+            body {
+                width: 21cm;
+                height: 29.7cm;
+                margin: 0;
+                padding: 2cm;
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2em;
+        }
+
+        .mood-grid {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2em;
+        }
+
+        .mood-grid th, .mood-grid td {
+            border: 1px solid #ccc;
+            padding: 1em;
+            text-align: center;
+        }
+
+        .notes {
+            margin-top: 2em;
+        }
+
+        .notes-area {
+            width: 100%;
+            height: 150px;
+            border: 1px solid #ccc;
+            margin-top: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Daily Mood Tracker</h1>
+        <p>Month: _________________ Year: _________________</p>
+    </div>
+
+    <table class="mood-grid">
+        <tr>
+            <th>Date</th>
+            <th>Mood (1-10)</th>
+            <th>Energy Level</th>
+            <th>Sleep Quality</th>
+            <th>Activities</th>
+            <th>Triggers</th>
+        </tr>
+        <!-- 31 rows for a month -->
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <!-- Add more rows as needed -->
+    </table>
+
+    <div class="notes">
+        <h2>Additional Notes</h2>
+        <div class="notes-area"></div>
+    </div>
+
+    <div class="footer">
+        <p>Remember: This tracker is a tool to help you understand your moods and patterns. Share this information with your mental health professional to better manage your well-being.</p>
+    </div>
+</body>
+</html> 
