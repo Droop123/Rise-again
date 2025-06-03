@@ -36,16 +36,65 @@ const sendButton = document.querySelector('#send-message');
 
 // Simple responses for the chatbot
 const botResponses = {
-    'hello': 'Hi there! How can I help you today?',
-    'hi': 'Hello! How can I assist you?',
-    'help': 'If you need immediate help, please call 988 for the Suicide & Crisis Lifeline, available 24/7.',
-    'depression': 'Depression is a serious but treatable condition. Would you like to learn more about symptoms or treatment options?',
-    'symptoms': 'Common symptoms of depression include persistent sadness, loss of interest in activities, changes in sleep patterns, and difficulty concentrating. Please consult a mental health professional for a proper diagnosis.',
-    'treatment': 'Depression can be treated through various methods including therapy, medication, and lifestyle changes. A mental health professional can help determine the best treatment plan for you.',
-    'suicide': 'If you\'re having thoughts of suicide, please call 988 immediately. You\'re not alone, and help is available 24/7.',
-    'therapy': 'Therapy can be very helpful in treating depression. Would you like information about finding a therapist?',
-    'default': 'I\'m here to provide basic information about depression. For immediate help, call 988. For medical advice, please consult a healthcare professional.'
+  // Greetings
+  'hello': 'Hey there! 😊 I’m really glad you’re here. How can I support you today?',
+  'hi': 'Hi! It’s nice to see you. What’s on your mind?',
+  'hey': 'Hey! I’m here for you — feel free to talk to me.',
+  'how are you': 'I’m just a little bot, but I’m happy to be here with you! How are you feeling?',
+
+  // General Support
+  'help': 'I’m always here to listen. If you need immediate support, please call or text 988 — they’re there 24/7 and care about you. 💛',
+  'emergency': 'If it’s an emergency, please call 988 or go to the nearest hospital. Your safety matters more than anything. 🏥',
+  'thank you': 'You’re most welcome. 💙 I’m glad to be here for you.',
+  'thanks': 'Anytime. Your feelings matter. 😊',
+
+  // Depression
+  'depression': 'Depression can feel so heavy. I’m here to talk or share resources if you’d like. You’re not alone. 🌧️❤️',
+  'what is depression': 'Depression is more than sadness. It can affect how you feel, think, and act — but it’s also treatable. There’s hope.',
+  'symptoms of depression': 'Some signs include feeling down most days, sleeping too much or too little, feeling tired, or not enjoying things you used to love.',
+  'treatment for depression': 'There are many ways to feel better — therapy, medication, support groups, or lifestyle changes. One step at a time.',
+  'is depression common': 'Yes — millions of people go through it. You’re not broken. You’re human. ❤️',
+
+  // Suicide & Crisis
+  'suicide': 'If you’re having thoughts of suicide, please don’t face them alone. Call 988 — they’ll listen without judgment. You matter deeply. 💛',
+  'i want to die': 'I’m really sorry you feel this way. 😔 You’re not alone — please call 988 or talk to someone you trust. You are loved more than you know.',
+  'i want to give up': 'It’s okay to feel tired. Life can be really hard. But I believe in your strength, and I want you to stay. 💙 Help is always close.',
+  'no one cares': 'I care. You may not see it now, but your existence matters more than you know. Let’s talk. 💛',
+
+  // Anxiety
+  'anxiety': 'Anxiety can make things feel really intense. Let’s take a deep breath together. Would you like a calming exercise?',
+  'symptoms of anxiety': 'You might feel restless, tense, shaky, have trouble focusing, or even feel like something bad is going to happen. You’re not alone.',
+  'coping with anxiety': 'Try grounding yourself: 5 things you see, 4 things you can touch, 3 you hear, 2 you smell, 1 you taste. It can help bring you back. 🌿',
+  'panic attack': 'Panic attacks are scary, but they pass. Focus on your breath. In through your nose, out through your mouth. You’re safe. 🧘',
+
+  // Motivation / Hopelessness
+  'i feel hopeless': 'That’s such a heavy feeling. 😞 Just by being here, you’ve shown courage. Let’s take things one step at a time. I’m with you.',
+  'i feel tired': 'It’s okay to rest. You’re doing your best, and that’s more than enough right now. 💤',
+  'i need motivation': 'Small wins matter. Drink some water. Breathe. You’re already moving forward by being here.',
+  'i feel lost': 'It’s okay to not have all the answers. You’re exploring, and that takes courage. Let’s talk it out.',
+  'i feel alone': 'That’s a painful feeling. But you’re not alone — I’m here with you, and others care too. 💛',
+  'why do i feel this way': 'Emotions can be confusing. Sometimes, talking about them helps. I’m here to listen.',
+  
+  // Therapy
+  'therapy': 'Talking to a therapist can be a life-changing step. It’s not weak — it’s brave. Want help finding one?',
+  'find therapist': 'You can try sites like Psychology Today or ask your doctor. Many schools or workplaces offer resources too!',
+  'is therapy helpful': 'Absolutely. It’s a safe space to be understood and grow. Even one session can make a difference. 🧠❤️',
+
+  // Self-Care
+  'self care': 'Self-care isn’t selfish. It can be anything — rest, journaling, walking, saying no, or just breathing. What helps *you* feel good?',
+  'what can i do now': 'Try something small and gentle: drink water, stretch, or listen to a calming song. You deserve care. 🧸',
+  'i need a distraction': 'Let’s try a positive distraction! How about: naming 3 things you like about today, even if they’re small?',
+  'i want to feel better': 'I’m so glad you said that. That’s the first step — and I’m proud of you. Let’s figure it out together.',
+  
+  // Encouragement
+  'i can\'t do this': 'It might feel that way now, but you’ve made it through tough days before. You’re stronger than you think. 🌈',
+  'i give up': 'Please don’t. You are needed, even if it doesn’t feel like it now. Let’s get through today together. 💪',
+  'life is hard': 'It really is. But there’s still beauty, still hope, and still support — like me, right here with you.',
+  
+  // Default
+  'default': 'I may not have all the answers, but I care. 💙 If you ever feel lost, remember — help is just a conversation away. Try calling 988 if you need someone to talk to.'
 };
+
 
 // Toggle chatbot visibility
 chatbotToggle.addEventListener('click', () => {
