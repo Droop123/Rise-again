@@ -99,7 +99,8 @@ chatInput.addEventListener('keypress', (e) => {
     }
 });
 
-// Form Validation
+
+// Form Validation and Email Sending
 const contactForm = document.querySelector('.contact-form');
 
 contactForm.addEventListener('submit', (e) => {
@@ -108,11 +109,39 @@ contactForm.addEventListener('submit', (e) => {
     const name = document.querySelector('#name').value.trim();
     const email = document.querySelector('#email').value.trim();
     const message = document.querySelector('#message').value.trim();
+    const submitButton = contactForm.querySelector('.submit-button');
     
     if (name && email && message) {
-        // Here you would typically send the form data to a server
-        alert('Thank you for reaching out. We will get back to you soon.');
-        contactForm.reset();
+        // Disable submit button and show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+        
+        // Prepare template parameters
+        const templateParams = {
+            from_name: name,
+            from_email: email,
+            message: message,
+            to_name: 'Site Admin', // You can customize this
+        };
+
+        // Send email using EmailJS
+        // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual EmailJS service and template IDs
+        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            .then(() => {
+                // Show success message
+                alert('Thank you for reaching out. We will get back to you soon.');
+                contactForm.reset();
+            })
+            .catch((error) => {
+                // Show error message
+                console.error('Email sending failed:', error);
+                alert('Sorry, there was an error sending your message. Please try again later.');
+            })
+            .finally(() => {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+            });
     } else {
         alert('Please fill in all fields.');
     }
@@ -568,4 +597,82 @@ function toggleLearnMore(button) {
     // Toggle current section
     content.classList.toggle('active');
     button.textContent = isExpanded ? 'Learn More' : 'Show Less';
-} 
+}
+
+// Story Form Handling
+const storyForm = document.querySelector('.story-form');
+const sharedStoriesContainer = document.getElementById('shared-stories');
+
+// Initialize stories array from localStorage or empty array
+let stories = JSON.parse(localStorage.getItem('shared-stories')) || [];
+
+// Function to display stories
+function displayStories() {
+    sharedStoriesContainer.innerHTML = '';
+    
+    stories.forEach((story, index) => {
+        const storyElement = document.createElement('div');
+        storyElement.className = 'story-entry';
+        
+        storyElement.innerHTML = `
+            <button class="delete-story" data-index="${index}">
+                <i class="fas fa-trash"></i>
+                Delete
+            </button>
+            <h4>${story.title}</h4>
+            <p>${story.content}</p>
+            <div class="story-date">${story.date}</div>
+        `;
+        
+        sharedStoriesContainer.prepend(storyElement);
+    });
+
+    // Add event listeners for delete buttons
+    document.querySelectorAll('.delete-story').forEach(button => {
+        button.addEventListener('click', (e) => {
+            if (confirm('Are you sure you want to delete this story?')) {
+                const index = parseInt(e.target.closest('.delete-story').dataset.index);
+                stories.splice(index, 1);
+                localStorage.setItem('shared-stories', JSON.stringify(stories));
+                displayStories();
+            }
+        });
+    });
+}
+
+// Handle form submission
+storyForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const title = document.getElementById('story-title').value.trim();
+    const content = document.getElementById('story-content').value.trim();
+    
+    if (title && content) {
+        // Create new story object
+        const newStory = {
+            title,
+            content,
+            date: new Date().toLocaleDateString()
+        };
+        
+        // Add to stories array
+        stories.push(newStory);
+        
+        // Save to localStorage
+        localStorage.setItem('shared-stories', JSON.stringify(stories));
+        
+        // Display updated stories
+        displayStories();
+        
+        // Reset form
+        storyForm.reset();
+        
+        // Show success message
+        alert('Thank you for sharing your story!');
+    } else {
+        alert('Please fill in both title and story fields.');
+    }
+});
+
+// Display existing stories on page load
+displayStories(); 
