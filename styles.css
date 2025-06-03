@@ -1078,4 +1078,142 @@ p {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Resource Links Styles */
+.resource-links {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.resource-links li {
+    margin-bottom: 0.5rem;
+}
+
+.resource-links a {
+    display: inline-block;
+    color: #2a5298;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid #2a5298;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.resource-links a:hover {
+    background-color: #2a5298;
+    color: white;
+}
+
+/* Shared Stories */
+.shared-stories-container {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--background-light);
+}
+
+.shared-stories-container h3 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.shared-stories {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.story-entry {
+    background: var(--background-light);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    position: relative;
+}
+
+.story-entry h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.story-entry p {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.story-entry .story-date {
+    color: var(--light-text);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.story-entry .delete-story {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--light-text);
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.story-entry .delete-story:hover {
+    color: #dc3545;
+}
+
+.story-entry .delete-story i {
+    font-size: 1rem;
+}
+
+/* Form enhancements */
+.story-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.story-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.story-form input[type="text"],
+.story-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--background-light);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.story-form input[type="text"]:focus,
+.story-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.story-form .submit-button {
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.story-form .submit-button:hover {
+    background: var(--secondary-color);
 } 
